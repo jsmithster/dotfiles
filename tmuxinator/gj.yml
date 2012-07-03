@@ -1,0 +1,10 @@
+# ~/.tmuxinator/gj.yml
+# you can make as many tabs as you wish...
+
+project_name: Geoffreys Jungle
+project_root: ~/Dev/SmashingIdeas/gj_android
+tabs:
+  - editor: vim .
+  - shell: 
+  - emulator: ~/Dev/-sdk/android-sdk-macosx/tools/emulator -avd KindleFire
+  - debugger: ~/Dev/-sdk/android-sdk-macosx/tools/ddms

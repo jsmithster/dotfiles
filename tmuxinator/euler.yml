@@ -1,0 +1,9 @@
+# ~/.tmuxinator/budge.yml
+# you can make as many tabs as you wish...
+
+project_name: euler
+project_root: ~/Dev/Xenocid/euler
+pre: 
+tabs:
+  - vim: vim .
+  - shell: 
