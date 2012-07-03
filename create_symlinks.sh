@@ -1,8 +1,8 @@
 # Delete existing symlinks
-rm -rf ~/.ssh
-rm -rf ~/.vim
-rm -rf ~/.zsh
-rm -rf ~/.tmuxinator
+rm ~/.ssh
+rm ~/.vim
+rm ~/.zsh
+rm ~/.tmuxinator
 
 rm ~/.vimrc
 rm ~/.gvimrc
