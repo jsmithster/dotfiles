@@ -1,0 +1,16 @@
+set nocompatible   		        " We don't have to be compatible with the basic vi
+set backspace=indent,eol,start  	" Allow backspacing over everything in the insert mode
+set nobackup
+set nowb
+set noswapfile
+set history=1000
+set nocp
+
+syntax on				" Enable highlighting for syntax
+
+" Enable filetype plugin
+filetype plugin on
+filetype indent on
+  
+" When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vim/vimrc

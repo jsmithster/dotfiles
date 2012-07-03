@@ -1,0 +1,28 @@
+# History file parameters (path to the history file, size of the history etc)
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+# Path to my zsh configuration.
+ZSH=$HOME/Config/dotfiles/zsh
+# Path to additional config files
+ZSH_CONFIG=$ZSH/config
+# Path to zsh plugins
+ZSH_PLUGINS=$ZSH/plugins
+
+# Load all of the config files in $ZSH/lib that end in .zsh
+# TIP: Add files you don't want in git to .gitignore
+for config_file ($ZSH_CONFIG/*.zsh) source $config_file
+
+# Load all of the plugins 
+plugins=()
+for plugin ($plugins); do
+  if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+  fi
+done
+
+ZSH_THEME="xenocid"
+
+# use .localrc for settings specific to one system
+[[ -f ~/.localrc ]] && . ~/.localrc

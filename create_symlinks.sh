@@ -12,6 +12,7 @@ rm ~/.tmux.conf
 rm ~/.ackrc
 rm ~/.rspec
 rm ~/.gemrc
+rm ~/.localrc
 
 #/ Create new symlinks
 ln -s $(pwd)/../ssh ~/.ssh
@@ -27,3 +28,4 @@ ln -s $(pwd)/tmux/tmux.conf ~/.tmux.conf
 ln -s $(pwd)/ackrc ~/.ackrc
 ln -s $(pwd)/rspec ~/.rspec
 ln -s $(pwd)/gemrc ~/.gemrc
+ln -s $(pwd)/localrc ~/.localrc
