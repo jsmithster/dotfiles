@@ -1,0 +1,5 @@
+[user]
+	name = Alex Koloskov
+	email = alexandr.koloskov@gmail.com
+[merge]
+	tool = vimdiff
