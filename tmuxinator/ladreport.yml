@@ -1,0 +1,15 @@
+# ~/.tmuxinator/ladreport.yml
+# you can make as many tabs as you wish...
+
+project_name: placeplay ads reporting
+project_root: ~/Dev/PressOK/ladreport
+rvm: 1.9.3@ladreport
+pre: 
+tabs:
+  - vim: vim .
+  - shell: 
+  - tests:
+  - database: psql -d ladreport_development 
+  - server: rails s
+  - logs: tail -f log/development.log
+  - console: pry -r ./config/environment 

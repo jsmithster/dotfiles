@@ -1,0 +1,14 @@
+# ~/.tmuxinator/budge.yml
+# you can make as many tabs as you wish...
+
+project_name: doodlestrategy
+project_root: ~/Dev/Xenocid/doodlestrategy
+pre: 
+tabs:
+  - vim: vim .
+  - shell: 
+  - tests:
+  - database: 
+  - server: 
+  - logs: 
+  - console: 
