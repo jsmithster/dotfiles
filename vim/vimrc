@@ -1,12 +1,90 @@
+set autoread
 set nocompatible   		        " We don't have to be compatible with the basic vi
+set laststatus=2   " Always show the statusline
 set backspace=indent,eol,start  	" Allow backspacing over everything in the insert mode
 set nobackup
 set nowb
 set noswapfile
 set history=1000
 set nocp
+set encoding=utf-8 			" Necessary to show unicode glyphs
+set t_Co=256 				" Explicitly tell vim that the terminal supports 256 colors
 
-syntax on				" Enable highlighting for syntax
+" Bundles
+" -----------------------------------------------------------------------------
+
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" Trying theese
+
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'mutewinter/vim-indent-guides'
+
+" General
+Bundle 'mileszs/ack.vim'
+
+Bundle 'rphillips/vim-zoomwin'		
+Bundle 'kien/ctrlp.vim'			
+Bundle 'scrooloose/nerdtree'		
+Bundle 'scrooloose/nerdcommenter'	
+Bundle 'sickill/vim-pasta'		
+Bundle 'vim-scripts/OmniCppComplete'
+Bundle 'tpope/vim-fugitive'		
+Bundle 'scrooloose/syntastic'
+
+" General text editing
+Bundle 'msanders/snipmate.vim'		
+Bundle 'tsaleh/vim-align'
+Bundle 'tpope/vim-surround'		
+
+" Ruby, Rails et al
+Bundle 'tpope/vim-rails.git'		
+Bundle 'tpope/vim-cucumber'		
+Bundle 'tpope/vim-haml'			
+Bundle 'skalnik/vim-vroom'		
+
+" Other file formats
+Bundle 'mutewinter/taskpaper.vim'
+Bundle 'tpope/vim-markdown'		
+Bundle 'acustodioo/vim-tmux'
+Bundle 'msanders/cocoa.vim'
+
+syntax on				
+
+let mapleader=","
+let g:mapleader =","
+
+" UI
+" -----------------------------------------------------------------------------
+
+set ruler          " Ruler on
+set nu 		         " Line numbers on
+set nowrap         " Line wrapping off
+set cmdheight=2    " Make the command area two lines high
+set encoding=utf-8
+if exists('+colorcolumn')
+	set colorcolumn=80 " Color the 80th column differently
+endif
+
+set showmatch   " Show matching brackets.
+set matchtime=2 " How many tenths of a second to blink
+
+" Text Format
+" -----------------------------------------------------------------------------
+set tabstop=2
+set backspace=2  " Delete everything with backspace
+set shiftwidth=2 " Tabs under smart indent
+set cindent
+set autoindent
+set smarttab
+set expandtab
 
 " Enable filetype plugin
 filetype plugin on
@@ -14,3 +92,45 @@ filetype indent on
   
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
+
+" Use Ack instead of grep
+set grepprg=ack                 
+
+set background=dark
+" Set colors for indent-guide
+hi IndentGuidesOdd  guibg=red   ctermbg=black
+hi IndentGuidesEven guibg=green ctermbg=darkgrey
+
+" Keys
+" -----------------------------------------------------------------------------
+
+" Fixing common typos
+command! W w
+command! Q q
+
+" Plugin specific:
+" -----------------------------------------------------------------------------
+
+" => NERDTree
+nnoremap <leader>nn :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd vimenter * if !argc() | NERDTree | endif    " Automatically open NERDtree, if vim launched w/o files specified
+
+" => NERDCommenter
+map <leader>/ <plug>NERDCommenterToggle<CR>
+imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
+
+" => ZoomWin
+map <up><up> :ZoomWin<CR>
+
+" => PowerLine
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_cache_enabled = 1
+call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+
+" => IndentGuides
+let indent_guides_guide_size=1
+let indent_guides_start_level=2
