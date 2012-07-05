@@ -10,6 +10,9 @@ setopt auto_cd
 # Allow piping to multiple outputs
 setopt multios
 
+# 
+setopt extended_glob
+
 # Path to my zsh configuration.
 ZSH=$HOME/Config/dotfiles/zsh
 # Path to additional config files
@@ -17,8 +20,10 @@ ZSH_CONFIG=$ZSH/config
 # Path to zsh plugins
 ZSH_PLUGINS=$ZSH/plugins
 
+
 # Add /usr/local/bin to the path, so we can enable Homebrew & all its packages
 export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 
 export EDITOR=vim
 export SHELL=zsh
@@ -27,7 +32,7 @@ export SHELL=zsh
 # TIP: Add files you don't want in git to .gitignore
 for config_file ($ZSH_CONFIG/*.zsh) source $config_file
 
-# Load and run compinit
+# Load and run compinit for the tab completion
 autoload -U compinit
 compinit -i
 

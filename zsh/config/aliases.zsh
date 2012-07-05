@@ -27,3 +27,6 @@ alias afind='ack-grep -il'
 # Easy edit/source .zshrc
 alias sz='source ~/.zshrc'
 alias ez='vim ~/.zshrc'
+
+# Always use mvim
+alias vim='mvim -v'
