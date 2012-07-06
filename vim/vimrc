@@ -29,15 +29,16 @@ Bundle 'mutewinter/vim-indent-guides'
 
 " General
 Bundle 'mileszs/ack.vim'
+Bundle 'vim-scripts/local_vimrc.vim'
 
 Bundle 'rphillips/vim-zoomwin'		
 Bundle 'kien/ctrlp.vim'			
 Bundle 'scrooloose/nerdtree'		
 Bundle 'scrooloose/nerdcommenter'	
 Bundle 'sickill/vim-pasta'		
-Bundle 'vim-scripts/OmniCppComplete'
 Bundle 'tpope/vim-fugitive'		
 Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/scratch.vim'
 
 " General text editing
 Bundle 'msanders/snipmate.vim'		
@@ -45,10 +46,19 @@ Bundle 'tsaleh/vim-align'
 Bundle 'tpope/vim-surround'		
 
 " Ruby, Rails et al
-Bundle 'tpope/vim-rails.git'		
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'		
 Bundle 'tpope/vim-cucumber'		
 Bundle 'tpope/vim-haml'			
 Bundle 'skalnik/vim-vroom'		
+
+" JavaScript, CoffeeScript etc
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+
+" C/C++
+Bundle 'vim-scripts/OmniCppComplete'
+Bundle 'vim-scripts/a.vim'
 
 " Other file formats
 Bundle 'mutewinter/taskpaper.vim'
@@ -75,6 +85,9 @@ endif
 
 set showmatch   " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
+
+colorscheme Tomorrow-Night-Bright
+:set background=dark
 
 " Text Format
 " -----------------------------------------------------------------------------
@@ -108,8 +121,26 @@ hi IndentGuidesEven guibg=green ctermbg=darkgrey
 command! W w
 command! Q q
 
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+set pastetoggle=<F2>
+
 " Plugin specific:
 " -----------------------------------------------------------------------------
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
 
 " => NERDTree
 nnoremap <leader>nn :NERDTreeToggle<CR>
@@ -134,3 +165,10 @@ call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 " => IndentGuides
 let indent_guides_guide_size=1
 let indent_guides_start_level=2
+
+" => vim-scratch
+map <down><down> :Sscratch<CR>
+autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+
+" => a.vim
+map <C-S-Up> :A<CR>
