@@ -4,7 +4,7 @@
 project_name: Geoffreys Jungle
 project_root: ~/Dev/SmashingIdeas/gj_android
 tabs:
-  - editor: vim .
+  - editor: export "CODE_TAGS=$HOME/.vim/ctags/android_sdk;$HOME/.vim/ctags/android_ndk;"; vim .
   - shell: 
   - emulator: ~/Dev/-sdk/android-sdk-macosx/tools/emulator -avd KindleFire
   - debugger: ~/Dev/-sdk/android-sdk-macosx/tools/ddms

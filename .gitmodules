@@ -91,3 +91,9 @@
 	path = vim/bundle/vim-zoomwin
 	url = https://github.com/rphillips/vim-zoomwin.git
   ignore = untracked
+[submodule "vim/bundle/vim-session"]
+	path = vim/bundle/vim-session
+	url = https://github.com/xolox/vim-session.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
