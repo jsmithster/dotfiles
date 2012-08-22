@@ -29,3 +29,4 @@ ln -s $(pwd)/ackrc ~/.ackrc
 ln -s $(pwd)/rspec ~/.rspec
 ln -s $(pwd)/gemrc ~/.gemrc
 ln -s $(pwd)/localrc ~/.localrc
+ln -s $(pwd)/octaverc ~/.octaverc
