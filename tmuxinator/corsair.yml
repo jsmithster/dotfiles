@@ -1,0 +1,14 @@
+# ~/.tmuxinator/corsair.yml
+# you can make as many tabs as you wish...
+
+project_name: corsair
+project_root: ~/Dev/Xenocid/corsair
+rvm: 1.9.3@corsair
+pre: sudo /etc/rc.d/mysqld start
+tabs:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - #empty, will just run plain bash
+  - shell: 

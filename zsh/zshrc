@@ -3,6 +3,20 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+# Bind keys to vi-mode instead of default emacs-mode
+bindkey -v
+
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
+    case $KEYMAP in
+        vicmd) print -rn -- $terminfo[cvvis];; # block cursor
+        viins) print -rn -- $terminfo[cnorm];; # less visible cursor
+    esac
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # Allow changing directory by its name, w/o cd
 setopt auto_cd
@@ -24,6 +38,8 @@ ZSH_PLUGINS=$ZSH/plugins
 # Add /usr/local/bin to the path, so we can enable Homebrew & all its packages
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+
+export GNUTERM='x11'
 
 export EDITOR=vim
 export SHELL=zsh
@@ -57,3 +73,5 @@ source "$ZSH/themes/$ZSH_THEME.zsh-theme"
 #
 # # Load the RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

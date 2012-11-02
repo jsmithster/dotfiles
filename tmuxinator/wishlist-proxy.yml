@@ -1,0 +1,14 @@
+# ~/.tmuxinator/wishlist-proxy.yml
+# you can make as many tabs as you wish...
+
+project_name: WishlistProxy
+project_root: ~/Dev/SmashingIdeas/tru-geoffrey-jungle-wishlist-server
+rvm: ruby-1.9.3-p194@wishlist-proxy
+tabs:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - # just shell
+  - shell: 
+  - server: ssh -i ~/Config/ssh/alex-si.pem ubuntu@54.245.80.148

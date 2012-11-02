@@ -23,11 +23,10 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Trying theese
-
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
 
 " General
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/local_vimrc.vim'
 Bundle 'xolox/vim-session'
@@ -45,7 +44,9 @@ Bundle 'vim-scripts/scratch.vim'
 Bundle 'msanders/snipmate.vim'		
 Bundle 'tsaleh/vim-align'
 Bundle 'tpope/vim-surround'		
-Bundle 'ervandew/supertab'
+Bundle 'git://github.com/Shougo/neocomplcache.git'
+Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
+Bundle 'git://github.com/godlygeek/tabular.git'
 
 " Ruby, Rails et al
 Bundle 'vim-ruby/vim-ruby'
