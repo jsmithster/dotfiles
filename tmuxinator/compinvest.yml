@@ -1,0 +1,9 @@
+# ~/.tmuxinator/compinvest.yml
+# you can make as many tabs as you wish...
+
+project_name: compinvest
+project_root: ~/Dev/Xenocid/compinvest
+rvm: 1.9.3@compinvest
+tabs:
+  - editor: vim
+  - shell:

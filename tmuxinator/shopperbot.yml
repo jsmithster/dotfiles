@@ -1,0 +1,12 @@
+# ~/.tmuxinator/shopperbot.yml
+# you can make as many tabs as you wish...
+
+project_name: ShopperBot
+project_root: ~/Dev/Xenocid/ShopperBot
+tabs:
+  - editor:
+      layout: 1d90,238x60,0,0{180x60,0,0,57x60,181,0}
+      panes:
+        - vim
+        - gst
+  - shell: gst
