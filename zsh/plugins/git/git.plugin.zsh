@@ -3,8 +3,8 @@ alias g='git'
 compdef g=git
 alias gst='git status -sb'
 compdef _git gst=git-status
-alias gl='git pull'
-compdef _git gl=git-pull
+#alias gl='git pull'
+#compdef _git gl=git-pull
 alias gup='git fetch && git rebase'
 compdef _git gup=git-fetch
 alias gp='git push'
@@ -38,6 +38,9 @@ alias gm='git merge'
 compdef _git gm=git-merge
 alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
+alias gl='git log --graph --pretty=\"format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'\''\" --abbrev-commit --date=relative'
+compdef _git gl=git-log
+
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
