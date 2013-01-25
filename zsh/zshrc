@@ -37,12 +37,30 @@ ZSH_PLUGINS=$ZSH/plugins
 
 # Add /usr/local/bin to the path, so we can enable Homebrew & all its packages
 export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 
 export GNUTERM='x11'
 
 export EDITOR=vim
 export SHELL=zsh
+
+plugins=(ant brew bundler django gem git git-flow github heroku npm pip pow python rails3 rvm sublime thor vagrant vundle tmuxinator)
+
+is_plugin() {
+  local base_dir=$1
+  local name=$2
+  test -f $base_dir/plugins/$name/$name.plugin.zsh \
+    || test -f $base_dir/plugins/$name/_$name
+}
+
+# Add all defined plugins to fpath. This must be done
+# before running compinit.
+for plugin ($plugins); do
+  if is_plugin $ZSH_CUSTOM $plugin; then
+    fpath=($ZSH_CUSTOM/plugins/$plugin $fpath)
+  elif is_plugin $ZSH $plugin; then
+    fpath=($ZSH/plugins/$plugin $fpath)
+  fi
+done
 
 # Load all of the config files in $ZSH/lib that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
@@ -53,7 +71,6 @@ autoload -U compinit
 compinit -i
 
 # Load all of the plugins 
-plugins=(ant brew bundler django gem git git-flow github heroku npm pip pow python rails3 rvm sublime thor vagrant vundle)
 for plugin ($plugins); do
   if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
     source $ZSH/plugins/$plugin/$plugin.plugin.zsh
@@ -74,4 +91,4 @@ source "$ZSH/themes/$ZSH_THEME.zsh-theme"
 # # Load the RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:/usr/local/smlnj-110.75/bin # Add RVM to PATH for scripting
