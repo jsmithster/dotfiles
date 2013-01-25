@@ -1,0 +1,13 @@
+# ~/.tmuxinator/mooc-imageproc.yml
+# you can make as many tabs as you wish...
+
+project_name: MOOC ImageProcessing
+project_root: ~/code/rails_project
+socket_name: foo # Not needed.  Remove to use default socket
+rvm: 1.9.3@rails_project
+tabs:
+  - editor:
+      layout: main-horizontal
+      panes:
+        - vim
+        - #empty, will just run plain bash
