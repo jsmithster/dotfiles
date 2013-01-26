@@ -26,7 +26,7 @@ Bundle 'gmarik/vundle'
 Bundle 'mutewinter/vim-indent-guides'
 
 " General
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/local_vimrc.vim'
 Bundle 'xolox/vim-session'
@@ -172,7 +172,8 @@ map <up><up> :ZoomWin<CR>
 " => PowerLine
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_cache_enabled = 1
-call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+"call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+python from powerline.bindings.vim import source_plugin; source_plugin()
 
 " => IndentGuides
 let indent_guides_guide_size=1
